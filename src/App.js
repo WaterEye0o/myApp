@@ -3,6 +3,7 @@ import {Provider} from "react-redux";
 import store from "./utilities/storage/store";
 import TopLevelComponent from './screens/EntryScreen';
 import Routing, {Router} from './utilities/routing';
+import Profile from "./screens/Profile";
 
 const Route = Routing.Route;
 
@@ -12,7 +13,8 @@ class App extends React.Component {
         return (
             <Provider store={store}>
                 <Router>
-                    <Route path='/' component={TopLevelComponent}/>
+                    <Route extra path='/' component={Profile}/>
+
                 </Router>
             </Provider>
         );

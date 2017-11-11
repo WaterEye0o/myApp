@@ -7,7 +7,8 @@ import {
     View,
 } from 'react-native';
 
-class EntryScreen extends React.Component {
+@connect(state=>({sampleReducer: state.sampleReducer}),{SampleAction})
+export default class EntryScreen extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -21,12 +22,11 @@ class EntryScreen extends React.Component {
     }
 
     passDispatchedAction() {
-        this.props.dispatch(SampleAction(this.state.passActionDispatchValue))
+       this.props.SampleAction(this.state.passActionDispatchValue)
     }
 
     failDispatchedAction() {
-        this.props.dispatch(SampleAction(this.state.failActionDispatchValue))
-
+        this.props.SampleAction(this.state.failActionDispatchValue)
     }
 
     render() {
@@ -52,13 +52,5 @@ const styles = StyleSheet.create({
     }
 });
 
-function mapStateToProps(state) {
-    return ({
-            sampleReducer: state.sampleReducer
-        }
 
-    )
-}
-
-export default connect(mapStateToProps)(EntryScreen);
 
